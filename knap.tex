@@ -31,7 +31,7 @@ dynamic programming algorithm. Here is the dynamic programming method:
 \newpage
 \begin{lstlisting}
 Precondition:	W is space left, w is a list of weights, v is a list of weights
-		n is the value of the bag currently (Should start at 0).
+		n is the value of the bag currently.
 		w, and v should be non-empty, and have the same cardinality
 		W should be a non-negative value
 procedure Knapsack(Int:W, List:w, List:v, Int:n)
@@ -40,14 +40,14 @@ procedure Knapsack(Int:W, List:w, List:v, Int:n)
 	List:V
 	#Initialize array to 0 where weight is 0
 	for(w = 0 to W) 
-		V[0,w] = 0
+		V[0][w] = 0
 	for(i = 1 to n)
-		for(w = 0 to W)
-			if(w[i] <= w)
-				V[i,w] = max(V[i-1,w], 
-					     v[i] + V[i-1, w-w[i]])
+		for(j = 0 to W)
+			if(w[i] <= j)
+				V[i][j] = max(V[i-1,j], 
+					     v[i] + V[i-1][j-w[i]])
 			else
-				V[i,w] = V[i-1, w]
+				V[i][j] = V[i-1, j]
 	return V[n,W]
 \end{lstlisting}
 
