@@ -42,7 +42,9 @@ procedure Knapsack(Int:W, List:w, List:v, Int:n)
 	for(w = 0 to W) 
 		V[0][w] = 0
 	for(i = 1 to n)
+		Assert w[0..i] = Knapsack(W, w[0..i], v, n) 
 		for(j = 0 to W)
+			Assert w[0..1] = Knapsack(W, w[0..i-1], v, n)
 			if(w[i] <= j)
 				V[i][j] = max(V[i-1,j], 
 					     v[i] + V[i-1][j-w[i]])
@@ -86,5 +88,7 @@ predicatable way. We can time the program using the Unix tool 'time' to see
 how long the program takes to process different sets of data. If needed, we can
 also plot the data using python to show what happens with the data sets as the
 algorithm runs.
+
+To see the testing look at the annotated data results and code on the following pages.
 
 \end{document}
